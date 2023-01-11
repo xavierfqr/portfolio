@@ -1,6 +1,17 @@
 import Head from 'next/head';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
+import { HomeContent } from '../components/HomeContent';
+import Navbar from '../components/Navbar';
 
 export default function Home() {
+  const [refs, setRefs] = useState<RefObject<HTMLDivElement>[]>([] as RefObject<HTMLDivElement>[]);
+  const mainContentRef = useRef(null);
+
+  useEffect(() => {
+    if (!mainContentRef.current) return;
+    setRefs([mainContentRef]);
+  }, [mainContentRef]);
+
   return (
     <>
       <Head>
@@ -9,7 +20,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main>
+        <Navbar refs={refs} />
+        <HomeContent ref={mainContentRef} />
+      </main>
     </>
   );
 }
