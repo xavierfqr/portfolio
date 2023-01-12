@@ -6,10 +6,11 @@ import Navbar from '../components/Navbar';
 export default function Home() {
   const [refs, setRefs] = useState<RefObject<HTMLDivElement>[]>([] as RefObject<HTMLDivElement>[]);
   const mainContentRef = useRef(null);
+  const aboutRef = useRef(null);
 
   useEffect(() => {
-    if (!mainContentRef.current) return;
-    setRefs([mainContentRef]);
+    if (!mainContentRef.current || !aboutRef.current) return;
+    setRefs([mainContentRef, aboutRef]);
   }, [mainContentRef]);
 
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <main>
         <Navbar refs={refs} />
         <HomeContent ref={mainContentRef} />
+        <HomeContent ref={aboutRef} />
       </main>
     </>
   );
