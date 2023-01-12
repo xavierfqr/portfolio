@@ -16,7 +16,7 @@ function NavButton({ isSelected, onClick, children }: PropsWithChildren<Props>) 
       _after={{
         content: '""',
         position: 'absolute',
-        bgColor: '#50E3C2',
+        bgColor: 'brand',
         height: '1px',
         width: isSelected ? '100%' : 0,
         left: 0,
@@ -24,7 +24,7 @@ function NavButton({ isSelected, onClick, children }: PropsWithChildren<Props>) 
         transition: 'width .3s ease-in-out',
       }}
       _hover={{
-        color: 'color: #50E3C2',
+        color: 'color: brand',
         _after: {
           width: '100%',
         },

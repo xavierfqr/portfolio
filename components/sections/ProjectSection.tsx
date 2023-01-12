@@ -1,4 +1,4 @@
-import { Box, Flex, Image } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image } from '@chakra-ui/react';
 import React, { forwardRef } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
@@ -63,7 +63,11 @@ const projects = [
 
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   return (
-    <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" alignItems="center" justify="center">
+    <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" alignItems="center" justify="center" direction="column">
+      <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
+        <Image src="/spades.png" w={7} h={7} mr={3} />
+        Projects
+      </Heading>
       <Carousel
         width="45rem"
         infiniteLoop
@@ -72,7 +76,6 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         renderArrowPrev={renderArrowPrev}
         onClickItem={onClickItem}
         showThumbs={false}
-        className="shadow-[0_0px_30px_0px_#50E3C244] p-32 rounded-xl"
       >
         {projects.map((project) => (
           <Flex cursor={project.url ? 'pointer' : 'auto'} alignItems="center" justify="center">

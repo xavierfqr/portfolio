@@ -29,13 +29,13 @@ function Navbar({ refs }: Props) {
           Home
         </NavButton>
         <NavButton isSelected={selectedIndex === 1} onClick={executeScroll(1)}>
-          Projects
+          About
         </NavButton>
         <NavButton isSelected={selectedIndex === 2} onClick={executeScroll(2)}>
-          ok
+          Projects
         </NavButton>
         <NavButton isSelected={selectedIndex === 3} onClick={executeScroll(3)}>
-          Yet
+          Contact Me
         </NavButton>
       </Flex>
 

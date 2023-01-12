@@ -22,7 +22,7 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         <Text fontSize={'4xl'}>Hi, I am Xavier Facqueur</Text>
         <Text
           fontSize={'4xl'}
-          color="#50E3C2"
+          color="brand"
           animation={animation}
           whiteSpace="nowrap"
           borderRight="solid 3px #50E3C2;"
