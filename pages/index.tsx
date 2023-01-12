@@ -1,17 +1,18 @@
 import Head from 'next/head';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
-import { HomeContent } from '../components/HomeContent';
+import { HomeSection } from '../components/sections/HomeSection';
 import Navbar from '../components/Navbar';
+import { ProjectSection } from '../components/sections/ProjectSection';
 
 export default function Home() {
   const [refs, setRefs] = useState<RefObject<HTMLDivElement>[]>([] as RefObject<HTMLDivElement>[]);
-  const mainContentRef = useRef(null);
-  const aboutRef = useRef(null);
+  const homeSectionRef = useRef(null);
+  const projectSectionRef = useRef(null);
 
   useEffect(() => {
-    if (!mainContentRef.current || !aboutRef.current) return;
-    setRefs([mainContentRef, aboutRef]);
-  }, [mainContentRef]);
+    if (!homeSectionRef || !projectSectionRef) return;
+    setRefs([homeSectionRef, projectSectionRef]);
+  }, [homeSectionRef]);
 
   return (
     <>
@@ -23,8 +24,8 @@ export default function Home() {
       </Head>
       <main>
         <Navbar refs={refs} />
-        <HomeContent ref={mainContentRef} />
-        <HomeContent ref={aboutRef} />
+        <HomeSection ref={homeSectionRef} />
+        <ProjectSection ref={projectSectionRef} />
       </main>
     </>
   );
