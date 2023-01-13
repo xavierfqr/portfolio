@@ -1,8 +1,11 @@
-import { Box, Flex, Heading, Image } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image, Icon } from '@chakra-ui/react';
 import React, { forwardRef } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { SiSolidity, SiReact, SiTypescript } from 'react-icons/si';
+import { FaEthereum } from 'react-icons/fa';
+import { TbBrandNextjs } from 'react-icons/tb';
 
 const renderArrowNext = (clickHandler: () => void, hasNext: boolean) => {
   return (
@@ -64,7 +67,16 @@ const projects = [
 // eslint-disable-next-line react/display-name
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   return (
-    <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" alignItems="center" justify="center" direction="column">
+    <Flex
+      ref={ref}
+      h="100vh"
+      mx="auto"
+      maxWidth="80%"
+      alignItems="center"
+      justify="center"
+      direction="column"
+      position="relative"
+    >
       <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="spade" />
         Projects
@@ -84,6 +96,21 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
           </Flex>
         ))}
       </Carousel>
+
+      <Icon boxSize={100} position="absolute" top={20} left={-20} color="blackAlpha.600">
+        <SiSolidity />
+      </Icon>
+      <Icon boxSize={100} position="absolute" bottom={200} left={10} color="blue.300">
+        <SiReact />
+      </Icon>
+      <Icon boxSize={100} position="absolute" top={120} right={30} color="blue.500">
+        <SiTypescript />
+      </Icon>
+      <Icon boxSize={100} position="absolute" bottom={120} right={30} color="blackAlpha.500">
+        <FaEthereum />
+      </Icon>
     </Flex>
   );
 });
+
+// SiSolidity, SiReact, SiTypescript, FaEthereum TbBrandNextjs
