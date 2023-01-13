@@ -12,18 +12,23 @@ const competences = [
   'Ethers.js',
   'HTML',
   'CSS',
+  'NextJs',
   'Firebase',
   'NestJs',
   'C++',
   'C',
   'Java',
+  'Tailwind',
+  'Material-UI',
+  'Chakra-UI',
 ];
 
+// eslint-disable-next-line react/display-name
 export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   return (
     <Flex ref={ref} h="100vh" w="80%" m="auto" justify="center" alignItems="center" direction="column">
       <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
-        <Image src="/spades.png" w={7} h={7} mr={3} />
+        <Image src="/spades.png" w={7} h={7} mr={3} alt="props" />
         About
       </Heading>
       <Box mb={10} justifySelf="flex-start" w="100%">
@@ -41,7 +46,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         </Heading>
         <Flex wrap="wrap" columnGap={10} rowGap={4}>
           {competences.map((competence) => (
-            <List>
+            <List key={competence}>
               <ListItem display="flex" alignItems="center">
                 <ListIcon as={RxDotFilled} color="brand" />
                 <Text fontSize="lg">{competence}</Text>

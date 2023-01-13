@@ -1,6 +1,7 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Box, Button, Flex, useColorMode, useColorModeValue } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRefIndexInViewport } from '../hooks/useRefIndexInViewport';
 import NavButton from './NavButton';
 
 type Props = {
@@ -10,6 +11,12 @@ type Props = {
 function Navbar({ refs }: Props) {
   const { toggleColorMode, colorMode } = useColorMode();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const refIndexInViewport = useRefIndexInViewport(refs);
+
+  useEffect(() => {
+    setSelectedIndex(refIndexInViewport);
+  }, [refIndexInViewport]);
 
   const executeScroll = (index: number) => () => {
     setSelectedIndex(index);

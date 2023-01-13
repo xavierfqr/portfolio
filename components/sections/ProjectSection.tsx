@@ -61,11 +61,12 @@ const projects = [
   },
 ];
 
+// eslint-disable-next-line react/display-name
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   return (
     <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" alignItems="center" justify="center" direction="column">
       <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
-        <Image src="/spades.png" w={7} h={7} mr={3} />
+        <Image src="/spades.png" w={7} h={7} mr={3} alt="spade" />
         Projects
       </Heading>
       <Carousel
@@ -77,8 +78,8 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         onClickItem={onClickItem}
         showThumbs={false}
       >
-        {projects.map((project) => (
-          <Flex cursor={project.url ? 'pointer' : 'auto'} alignItems="center" justify="center">
+        {projects.map((project, index) => (
+          <Flex key={index} cursor={project.url ? 'pointer' : 'auto'} alignItems="center" justify="center">
             <Image src={project.src} alt={project.alt} objectFit="contain" h={370} />
           </Flex>
         ))}

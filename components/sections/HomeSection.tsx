@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { forwardRef, RefObject } from 'react';
 import { downloadPDF } from '../../utils/downloadPDF';
 
+// eslint-disable-next-line react/display-name
 export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const animatedText = keyframes`
     from { width: 0; }
