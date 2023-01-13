@@ -3,17 +3,19 @@ import React, { RefObject, useEffect, useRef, useState } from 'react';
 import { HomeSection } from '../components/sections/HomeSection';
 import Navbar from '../components/Navbar';
 import { ProjectSection } from '../components/sections/ProjectSection';
-import { AboutSection } from '../components/sections/AboutSections';
+import { AboutSection } from '../components/sections/AboutSection';
+import FormSection from '../components/sections/FormSection';
 
 export default function Home() {
   const [refs, setRefs] = useState<RefObject<HTMLDivElement>[]>([] as RefObject<HTMLDivElement>[]);
   const homeSectionRef = useRef(null);
   const projectSectionRef = useRef(null);
   const aboutSectionRef = useRef(null);
+  const formSectionRef = useRef(null);
 
   useEffect(() => {
-    if (!homeSectionRef || !projectSectionRef || !aboutSectionRef) return;
-    setRefs([homeSectionRef, aboutSectionRef, projectSectionRef]);
+    if (!homeSectionRef || !projectSectionRef || !aboutSectionRef || !formSectionRef) return;
+    setRefs([homeSectionRef, aboutSectionRef, projectSectionRef, formSectionRef]);
   }, []);
 
   return (
@@ -29,6 +31,7 @@ export default function Home() {
         <HomeSection ref={homeSectionRef} />
         <AboutSection ref={aboutSectionRef} />
         <ProjectSection ref={projectSectionRef} />
+        <FormSection ref={formSectionRef} />
       </main>
     </>
   );

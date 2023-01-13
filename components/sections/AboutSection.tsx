@@ -1,9 +1,7 @@
 import { Box, Flex, Heading, Image, keyframes, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { RxDotFilled } from 'react-icons/rx';
-import { annotate } from 'rough-notation';
 import { useAnnotation } from '../../hooks/useAnnotation';
-import { useIsInViewport } from '../../hooks/useRefIndexInViewport';
 
 const competences = [
   'React',
