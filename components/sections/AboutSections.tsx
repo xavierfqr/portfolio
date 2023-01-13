@@ -1,6 +1,9 @@
-import { Box, Circle, Flex, Heading, Image, keyframes, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
-import React, { forwardRef } from 'react';
+import { Box, Flex, Heading, Image, keyframes, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { RxDotFilled } from 'react-icons/rx';
+import { annotate } from 'rough-notation';
+import { useAnnotation } from '../../hooks/useAnnotation';
+import { useIsInViewport } from '../../hooks/useRefIndexInViewport';
 
 const competences = [
   'React',
@@ -23,14 +26,20 @@ const competences = [
   'Chakra-UI',
 ];
 
+const animatedText = keyframes`
+from { transform: translateY(0px); }
+to { transform: translateY(-5px); }
+`;
+
+const animation = `${animatedText} 0.5s forwards`;
+
 // eslint-disable-next-line react/display-name
 export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
-  const animatedText = keyframes`
-    from { transform: translateY(0px); }
-    to { transform: translateY(-5px); }
-  `;
+  const technologiesRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLHeadingElement>(null);
 
-  const animation = `${animatedText} 0.5s forwards`;
+  useAnnotation(technologiesRef);
+  useAnnotation(descriptionRef);
 
   return (
     <Flex ref={ref} h="100vh" w="80%" m="auto" justify="center" alignItems="center" direction="column">
@@ -39,7 +48,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         About
       </Heading>
       <Box mb={10} justifySelf="flex-start" w="100%">
-        <Heading as="h3" fontSize="3xl" mb={6}>
+        <Heading as="h3" fontSize="3xl" mb={6} ref={descriptionRef} w="fit-content">
           Description
         </Heading>
         <Text fontSize="lg">
@@ -51,7 +60,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         </Text>
       </Box>
       <Box justifySelf="flex-start" w="100%">
-        <Heading as="h3" fontSize="3xl" mb={6}>
+        <Heading as="h3" fontSize="3xl" mb={6} ref={technologiesRef} w="fit-content">
           Technologies
         </Heading>
         <List display="flex" flexWrap="wrap" columnGap={10} rowGap={4} cursor="default">

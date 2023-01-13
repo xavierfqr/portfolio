@@ -7,6 +7,7 @@ const config: ThemeConfig = {
 
 const colors = {
   brand: '#50E3C2',
+  secondary: '#F56565',
 };
 
 export const theme = extendTheme({ config, colors });

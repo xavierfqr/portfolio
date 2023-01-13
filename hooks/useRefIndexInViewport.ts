@@ -27,3 +27,19 @@ export const useRefIndexInViewport = (refs: RefObject<HTMLElement>[]) => {
 
   return indexInViewport;
 };
+
+export const useIsInViewport = (ref: RefObject<HTMLElement>) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(([entry]) => setIsIntersecting(entry.isIntersecting));
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [ref]);
+
+  return isIntersecting;
+};
