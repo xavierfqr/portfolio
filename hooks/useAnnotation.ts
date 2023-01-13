@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from 'react';
 import { annotate } from 'rough-notation';
 import { useIsInViewport } from './useRefIndexInViewport';
 
-export const useAnnotation = (ref: RefObject<any>) => {
+export const useUnderlineAnnotation = (ref: RefObject<any>) => {
   const [isElementShowing, setIsElementShowing] = useState(false);
   const isElementInViewport = useIsInViewport(ref);
 

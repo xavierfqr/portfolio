@@ -9,6 +9,8 @@ import {
   Input,
   Textarea,
   Image,
+  useToast,
+  Box,
 } from '@chakra-ui/react';
 import { Field, Form, Formik, FormikHelpers, type FieldAttributes } from 'formik';
 import emailjs from '@emailjs/browser';
@@ -36,17 +38,30 @@ const validateEmail = (value: string) => {
 // eslint-disable-next-line react/display-name
 export const FormSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const formMailRef = useRef<HTMLFormElement>(null);
+  const toast = useToast();
 
   const handleSubmit = async (values: InitialValues, actions: FormikHelpers<InitialValues>) => {
     try {
       if (!formMailRef.current) return;
-      const result = await emailjs.send(
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
         values,
         process.env.NEXT_PUBLIC_EMAIL_KEY as string
       );
+      toast({
+        title: 'Email sent !',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
     } catch (e) {
+      toast({
+        title: 'Error sending email',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
       console.log(e);
     }
   };

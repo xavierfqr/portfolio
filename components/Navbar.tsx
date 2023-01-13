@@ -39,7 +39,7 @@ function Navbar({ refs }: Props) {
       left={0}
       zIndex={10}
     >
-      <Box fontFamily="fantasy" color={color} fontSize="2xl">
+      <Box fontFamily="fantasy" color={color} fontSize="3xl" mt={4}>
         Xavierfqr
       </Box>
       <Flex gap={2}>

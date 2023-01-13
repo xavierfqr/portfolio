@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Image, keyframes, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { RxDotFilled } from 'react-icons/rx';
-import { useAnnotation } from '../../hooks/useAnnotation';
+import { useUnderlineAnnotation } from '../../hooks/useAnnotation';
 
 const competences = [
   'React',
@@ -36,8 +36,8 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const technologiesRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLHeadingElement>(null);
 
-  useAnnotation(technologiesRef);
-  useAnnotation(descriptionRef);
+  useUnderlineAnnotation(technologiesRef);
+  useUnderlineAnnotation(descriptionRef);
 
   return (
     <Flex ref={ref} h="100vh" w="80%" m="auto" justify="center" alignItems="center" direction="column">
