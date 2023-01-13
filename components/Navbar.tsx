@@ -27,7 +27,18 @@ function Navbar({ refs }: Props) {
   const color = useColorModeValue('black', 'white');
 
   return (
-    <Flex h={16} w="100%" py={2} px={4} align="center" justify="space-between" position="fixed" top={0} left={0}>
+    <Flex
+      h={16}
+      w="100%"
+      py={2}
+      px={4}
+      align="center"
+      justify="space-between"
+      position="fixed"
+      top={0}
+      left={0}
+      zIndex={10}
+    >
       <Box fontFamily="fantasy" color={color} fontSize="2xl">
         Xavierfqr
       </Box>
