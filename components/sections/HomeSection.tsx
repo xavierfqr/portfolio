@@ -48,12 +48,7 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
             <Image src="/linkedin.png" alt="programmer illustration" h={35} />
           </Link>
         </Flex>
-        <Button
-          colorScheme="teal"
-          color="teal"
-          mt={5}
-          onClick={() => downloadPDF('/resume.pdf', 'resume_xavierfacqueur.pdf')}
-        >
+        <Button colorScheme="teal" mt={5} onClick={() => downloadPDF('/resume.pdf', 'resume_xavierfacqueur.pdf')}>
           Check my resume
         </Button>
       </Box>

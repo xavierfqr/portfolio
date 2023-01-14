@@ -36,7 +36,7 @@ const validateEmail = (value: string) => {
 };
 
 // eslint-disable-next-line react/display-name
-export const FormSection = forwardRef<HTMLDivElement, any>((_, ref) => {
+export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const formMailRef = useRef<HTMLFormElement>(null);
   const toast = useToast();
 
@@ -85,7 +85,7 @@ export const FormSection = forwardRef<HTMLDivElement, any>((_, ref) => {
             </Field>
             <Field name="user_email" validate={validateEmail}>
               {({ field, form }: any) => (
-                <FormControl isInvalid={form.errors.user_email}>
+                <FormControl mt={4} isInvalid={form.errors.user_email}>
                   <FormLabel>Email</FormLabel>
                   <Input {...field} placeholder="Enter your email" />
                   <FormErrorMessage>{form.errors.user_email}</FormErrorMessage>
@@ -94,7 +94,7 @@ export const FormSection = forwardRef<HTMLDivElement, any>((_, ref) => {
             </Field>
             <Field name="message">
               {({ field }: FieldAttributes<any>) => (
-                <FormControl>
+                <FormControl mt={4}>
                   <FormLabel>Message</FormLabel>
                   <Textarea {...field} placeholder="Enter your message" resize="none" />
                 </FormControl>
@@ -109,5 +109,3 @@ export const FormSection = forwardRef<HTMLDivElement, any>((_, ref) => {
     </Flex>
   );
 });
-
-export default FormSection;

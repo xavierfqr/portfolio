@@ -4,7 +4,7 @@ import { HomeSection } from '../components/sections/HomeSection';
 import Navbar from '../components/Navbar';
 import { ProjectSection } from '../components/sections/ProjectSection';
 import { AboutSection } from '../components/sections/AboutSection';
-import FormSection from '../components/sections/FormSection';
+import { ContactSection } from '../components/sections/ContactSection';
 import { Footer } from '../components/Footer';
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
         <HomeSection ref={homeSectionRef} />
         <AboutSection ref={aboutSectionRef} />
         <ProjectSection ref={projectSectionRef} />
-        <FormSection ref={formSectionRef} />
+        <ContactSection ref={formSectionRef} />
         <Footer />
       </main>
     </>
