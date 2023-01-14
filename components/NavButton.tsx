@@ -10,7 +10,6 @@ function NavButton({ isSelected, onClick, children }: PropsWithChildren<Props>) 
   return (
     <Button
       opacity={1}
-      fontFamily="fantasy"
       fontSize="2xl"
       onClick={onClick}
       _after={{

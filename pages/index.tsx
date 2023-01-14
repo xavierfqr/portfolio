@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { ProjectSection } from '../components/sections/ProjectSection';
 import { AboutSection } from '../components/sections/AboutSection';
 import FormSection from '../components/sections/FormSection';
+import { Footer } from '../components/Footer';
 
 export default function Home() {
   const [refs, setRefs] = useState<RefObject<HTMLDivElement>[]>([] as RefObject<HTMLDivElement>[]);
@@ -32,6 +33,7 @@ export default function Home() {
         <AboutSection ref={aboutSectionRef} />
         <ProjectSection ref={projectSectionRef} />
         <FormSection ref={formSectionRef} />
+        <Footer />
       </main>
     </>
   );
