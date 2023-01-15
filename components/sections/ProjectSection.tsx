@@ -41,26 +41,26 @@ const onClickItem = (itemIndex: number) => {
 const projects = [
   {
     src: '/projects/XFQerc20-token.png',
-    alt: 'Project 1',
-    url: 'https://github.com/xavierfqr/XFQ-token',
+    alt: 'Project token',
+    url: 'https://xfq-token.vercel.app/',
   },
   {
     src: '/projects/invoices.png',
-    alt: 'Project 4',
+    alt: 'Project invoices',
   },
   {
     src: '/projects/LydiaSol.png',
-    alt: 'Project 5',
-    url: 'https://github.com/xavierfqr/Lydia-sol',
+    alt: 'Project lydia',
+    url: 'https://lydia-sol-qs5.vercel.app/',
   },
   {
     src: '/projects/blokoding.png',
-    alt: 'Project 2',
+    alt: 'Project blokoding',
     url: 'https://play.google.com/store/apps/details?id=com.blokoding',
   },
   {
     src: '/projects/documents.png',
-    alt: 'Project 3',
+    alt: 'Beeldi Socuments section',
   },
 ];
 
