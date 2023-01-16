@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, flexbox, Show, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, flexbox, Show, useColorMode, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useRefIndexInViewport } from '../hooks/useRefIndexInViewport';
 import NavButton from './NavButton';
@@ -11,6 +11,10 @@ type Props = {
 function Navbar({ refs }: Props) {
   const { toggleColorMode, colorMode } = useColorMode();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [isLowerThan480] = useMediaQuery('(max-width: 480px)');
+  const [isLowerThan720] = useMediaQuery('(max-width: 720px)');
+
+  console.log(isLowerThan480);
 
   const refIndexInViewport = useRefIndexInViewport(refs);
 
@@ -18,17 +22,21 @@ function Navbar({ refs }: Props) {
     setSelectedIndex(refIndexInViewport);
   }, [refIndexInViewport]);
 
-  const executeScroll = (index: number) => () => {
-    setSelectedIndex(index);
-    refs[index].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  const executeScroll =
+    (index: number, yOffset = 0) =>
+    () => {
+      setSelectedIndex(index);
+      const calcYOffset = isLowerThan480 ? yOffset : isLowerThan720 ? yOffset / 2 : 0;
+      const y = refs[index].current.getBoundingClientRect().top + window.pageYOffset + calcYOffset;
+      window.scrollTo({ behavior: 'smooth', top: y });
+    };
   const isDark = colorMode === 'dark';
 
   const color = useColorModeValue('black', 'white');
 
   return (
     <Flex
-      h={16}
+      h="fit-content"
       w="100%"
       py={2}
       px={{ base: 0, md: 4 }}
@@ -39,6 +47,8 @@ function Navbar({ refs }: Props) {
       left={0}
       zIndex={100}
       direction={{ base: 'column', md: 'row' }}
+      bg="gray.900"
+      boxShadow="lg"
     >
       <Flex
         fontFamily="fantasy"
@@ -64,7 +74,7 @@ function Navbar({ refs }: Props) {
           <NavButton isSelected={selectedIndex === 0} onClick={executeScroll(0)}>
             Home
           </NavButton>
-          <NavButton isSelected={selectedIndex === 1} onClick={executeScroll(1)}>
+          <NavButton isSelected={selectedIndex === 1} onClick={executeScroll(1, -100)}>
             About
           </NavButton>
           <NavButton isSelected={selectedIndex === 2} onClick={executeScroll(2)}>
