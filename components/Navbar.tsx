@@ -20,7 +20,7 @@ function Navbar({ refs }: Props) {
 
   const executeScroll = (index: number) => () => {
     setSelectedIndex(index);
-    refs[index].current?.scrollIntoView();
+    refs[index].current?.scrollIntoView({ block: 'start' });
   };
   const isDark = colorMode === 'dark';
 
@@ -50,7 +50,7 @@ function Navbar({ refs }: Props) {
         position="relative"
         justify={{ base: 'center', md: 'flex-start' }}
       >
-        <Box>Xavierfqr</Box>
+        <Box>Xavier.Facqueur</Box>
         <Box position="absolute" right={0} top={0} mr={2}>
           <Show below="md">
             <Button mr={2} onClick={toggleColorMode} colorScheme="blackAlpha">

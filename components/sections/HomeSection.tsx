@@ -28,16 +28,7 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       justify={{ base: 'center', lg: 'space-between' }}
       position="relative"
     >
-      <Box position="absolute" bottom={0} w="100%">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="none">
-          <path
-            d="M 0 350 Q 250 250 400 300 Q 500 350 800 300 L 800 300 Q 415 400 350 350 Q 300 300 0 350 L 0 350 "
-            fill="#50E3C2"
-          />
-        </svg>
-      </Box>
-
-      <Box mb={20}>
+      <Box mb={20} position="relative" zIndex={10}>
         <Text fontSize={'4xl'}>Hi, I am Xavier Facqueur</Text>
         <Text
           fontSize={'4xl'}
@@ -64,6 +55,14 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       <Show above="lg">
         <Image src="/programmer_working.png" alt="programmer illustration" h={360} mb={20} />
       </Show>
+      <Box position="absolute" bottom={[100, 20, 0]} w="100%">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="none">
+          <path
+            d="M 0 350 Q 250 250 400 300 Q 500 350 800 300 L 800 300 Q 415 400 350 350 Q 300 300 0 350 L 0 350 "
+            fill="#50E3C2"
+          />
+        </svg>
+      </Box>
     </Flex>
   );
 });
