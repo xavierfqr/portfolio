@@ -9,8 +9,8 @@ type Props = {
 function NavButton({ isSelected, onClick, children }: PropsWithChildren<Props>) {
   return (
     <Button
-      opacity={1}
-      fontSize="2xl"
+      p={{ base: 3, md: 4 }}
+      fontSize={{ base: 'lg', md: '2xl' }}
       onClick={onClick}
       _after={{
         content: '""',

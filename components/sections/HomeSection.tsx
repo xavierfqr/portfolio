@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, keyframes, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Image, keyframes, Show, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import React, { forwardRef, RefObject } from 'react';
 import { downloadPDF } from '../../utils/downloadPDF';
@@ -18,7 +18,16 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const animation = `${animatedText} 2s steps(20) 1s 1 normal both, ${animatedCursor} 1s steps(16) infinite normal;`;
 
   return (
-    <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" alignItems="center" justify="space-between" position="relative">
+    <Flex
+      ref={ref}
+      h="100vh"
+      mx="auto"
+      maxWidth="80%"
+      direction={{ base: 'column', lg: 'row' }}
+      alignItems="center"
+      justify={{ base: 'center', lg: 'space-between' }}
+      position="relative"
+    >
       <Box position="absolute" bottom={0} w="100%">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="none">
           <path
@@ -52,7 +61,9 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
           Check my resume
         </Button>
       </Box>
-      <Image src="/programmer_working.png" alt="programmer illustration" h={400} mb={20} />
+      <Show above="lg">
+        <Image src="/programmer_working.png" alt="programmer illustration" h={360} mb={20} />
+      </Show>
     </Flex>
   );
 });
