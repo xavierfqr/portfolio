@@ -79,7 +79,7 @@ export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
           <Form className="w-full md:w-4/5 lg:w-3/5" ref={formMailRef}>
             <Field name="user_name">
               {({ field }: any) => (
-                <FormControl>
+                <FormControl borderColor="#444">
                   <FormLabel>First name</FormLabel>
                   <Input {...field} placeholder="Enter your name" />
                 </FormControl>
@@ -87,7 +87,7 @@ export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
             </Field>
             <Field name="user_email" validate={validateEmail}>
               {({ field, form }: any) => (
-                <FormControl mt={4} isInvalid={form.errors.user_email}>
+                <FormControl mt={4} isInvalid={form.errors.user_email} borderColor="#444">
                   <FormLabel>Email</FormLabel>
                   <Input {...field} placeholder="Enter your email" />
                   <FormErrorMessage>{form.errors.user_email}</FormErrorMessage>
@@ -96,7 +96,7 @@ export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
             </Field>
             <Field name="message">
               {({ field }: FieldAttributes<any>) => (
-                <FormControl mt={4}>
+                <FormControl mt={4} borderColor="#444">
                   <FormLabel>Message</FormLabel>
                   <Textarea {...field} placeholder="Enter your message" resize="none" />
                 </FormControl>
