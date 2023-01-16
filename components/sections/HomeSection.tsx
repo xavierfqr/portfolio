@@ -22,7 +22,7 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       ref={ref}
       h="100vh"
       mx="auto"
-      maxWidth="80%"
+      maxWidth={{ base: '93%', lg: '80%' }}
       direction={{ base: 'column', lg: 'row' }}
       alignItems="center"
       justify={{ base: 'center', lg: 'space-between' }}
