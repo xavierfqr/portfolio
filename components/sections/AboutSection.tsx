@@ -40,7 +40,15 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   useUnderlineAnnotation(descriptionRef);
 
   return (
-    <Flex ref={ref} h="100vh" w="80%" m="auto" justify="center" alignItems="center" direction="column">
+    <Flex
+      ref={ref}
+      h={{ base: '100%', sm: '100vh' }}
+      w={{ base: '90%', md: '80%' }}
+      m="auto"
+      justify="center"
+      alignItems="center"
+      direction="column"
+    >
       <Heading as="h2" color="brand" pt={6} mb={10} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="props" />
         About
@@ -52,9 +60,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         <Text fontSize="lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam praesentium fugit ratione aliquid delectus
           hic, dolorum ullam commodi necessitatibus, recusandae perferendis nulla reprehenderit assumenda eos possimus
-          quod magnam velit eaque officiis perspiciatis libero atque ab sunt accusamus! Sit libero dolorum, cupiditate
-          dolore ut magni ullam minima odit unde nesciunt molestias vel officiis quam, eligendi totam voluptates. Dolor
-          quidem quis consectetur.
+          quod magnam velit eaque officiis perspiciatis
         </Text>
       </Box>
       <Box justifySelf="flex-start" w="100%">
