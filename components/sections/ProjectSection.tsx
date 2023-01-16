@@ -1,11 +1,8 @@
-import { Box, Flex, Heading, Image, Icon } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image } from '@chakra-ui/react';
 import React, { forwardRef } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { SiSolidity, SiReact, SiTypescript } from 'react-icons/si';
-import { FaEthereum } from 'react-icons/fa';
-import { TbBrandNextjs } from 'react-icons/tb';
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 
 const renderArrowNext = (clickHandler: () => void, hasNext: boolean) => {
   return (
@@ -59,6 +56,10 @@ const projects = [
     url: 'https://play.google.com/store/apps/details?id=com.blokoding',
   },
   {
+    src: '/projects/GE_Healthcare.png',
+    alt: 'Project GE Healthcare',
+  },
+  {
     src: '/projects/documents.png',
     alt: 'Beeldi Socuments section',
   },
@@ -77,38 +78,33 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       direction="column"
       position="relative"
     >
-      <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
+      <Heading as="h2" color="brand" mb={20} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="spade" />
         Projects
       </Heading>
       <Carousel
-        width="45rem"
+        width="100%"
         infiniteLoop
         showStatus={false}
         renderArrowNext={renderArrowNext}
         renderArrowPrev={renderArrowPrev}
         onClickItem={onClickItem}
         showThumbs={false}
+        className="select-none"
       >
         {projects.map((project, index) => (
-          <Flex key={index} cursor={project.url ? 'pointer' : 'auto'} alignItems="center" justify="center">
+          <Flex
+            key={index}
+            direction="column"
+            cursor={project.url ? 'pointer' : 'auto'}
+            alignItems="center"
+            justify="center"
+            position="relative"
+          >
             <Image src={project.src} alt={project.alt} objectFit="contain" h={370} />
           </Flex>
         ))}
       </Carousel>
-
-      <Icon boxSize={100} position="absolute" top={20} left={-20} color="blackAlpha.600">
-        <SiSolidity />
-      </Icon>
-      <Icon boxSize={100} position="absolute" bottom={200} left={10} color="blue.300">
-        <SiReact />
-      </Icon>
-      <Icon boxSize={100} position="absolute" top={120} right={30} color="blue.500">
-        <SiTypescript />
-      </Icon>
-      <Icon boxSize={100} position="absolute" bottom={120} right={30} color="blackAlpha.500">
-        <FaEthereum />
-      </Icon>
     </Flex>
   );
 });
