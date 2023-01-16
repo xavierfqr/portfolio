@@ -20,7 +20,7 @@ function Navbar({ refs }: Props) {
 
   const executeScroll = (index: number) => () => {
     setSelectedIndex(index);
-    refs[index].current?.scrollIntoView({ block: 'start' });
+    refs[index].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   const isDark = colorMode === 'dark';
 
@@ -31,13 +31,13 @@ function Navbar({ refs }: Props) {
       h={16}
       w="100%"
       py={2}
-      px={4}
+      px={{ base: 0, md: 4 }}
       align="center"
       justify="space-between"
       position="fixed"
       top={0}
       left={0}
-      zIndex={10}
+      zIndex={100}
       direction={{ base: 'column', md: 'row' }}
     >
       <Flex
@@ -53,7 +53,7 @@ function Navbar({ refs }: Props) {
         <Box>Xavier.Facqueur</Box>
         <Box position="absolute" right={0} top={0} mr={2}>
           <Show below="md">
-            <Button mr={2} onClick={toggleColorMode} colorScheme="blackAlpha">
+            <Button onClick={toggleColorMode} colorScheme="blackAlpha">
               {isDark ? <SunIcon boxSize={6} color="white" /> : <MoonIcon boxSize={6} />}
             </Button>
           </Show>

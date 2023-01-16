@@ -115,7 +115,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
           </Flex>
         ))}
       </Carousel>
-      <Box as="i" maxW={{ base: '95%', md: '70%' }} p={2} mt={2} rounded="md" bg="black" fontSize="xl">
+      <Box as="i" maxW={{ base: '95%', md: '70%' }} p={2} mt={2} rounded="md" bg="black" color="white" fontSize="xl">
         {projects[selectedIndex].desc}
       </Box>
     </Flex>

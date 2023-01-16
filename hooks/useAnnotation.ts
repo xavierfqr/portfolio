@@ -9,7 +9,12 @@ export const useUnderlineAnnotation = (ref: RefObject<any>) => {
 
   useEffect(() => {
     if (isElementInViewport && !isElementShowing) {
-      const techAnnotation = annotate(ref.current, { type: 'underline', animate: true, color: '#F56565' });
+      const techAnnotation = annotate(ref.current, {
+        type: 'underline',
+        animate: true,
+        color: '#F56565',
+        animationDuration: 2000,
+      });
       techAnnotation.show();
       setIsElementShowing(true);
     }

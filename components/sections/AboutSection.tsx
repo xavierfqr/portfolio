@@ -41,7 +41,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
 
   return (
     <Flex ref={ref} h="100vh" w="80%" m="auto" justify="center" alignItems="center" direction="column">
-      <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
+      <Heading as="h2" color="brand" pt={6} mb={10} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="props" />
         About
       </Heading>
