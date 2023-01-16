@@ -61,12 +61,12 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       alignItems="center"
       direction="column"
     >
-      <Heading as="h2" color={brandColor} pt={6} mb={10} display="flex" alignItems="center">
+      <Heading as="h2" color={brandColor} pt={6} mb={20} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="props" />
         About
       </Heading>
-      <Box mb={10} justifySelf="flex-start" w="100%">
-        <Heading as="h3" fontSize="3xl" mb={6} ref={descriptionRef} w="fit-content">
+      <Box mb={16} w="100%">
+        <Heading as="h3" fontSize="3xl" mb={8} ref={descriptionRef} w="fit-content">
           Description
         </Heading>
         <Text fontSize="lg">
@@ -75,11 +75,11 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
           quod magnam velit eaque officiis perspiciatis
         </Text>
       </Box>
-      <Box justifySelf="flex-start" w="100%">
-        <Heading as="h3" fontSize="3xl" mb={6} ref={technologiesRef} w="fit-content">
+      <Box w="100%">
+        <Heading as="h3" fontSize="3xl" mb={8} ref={technologiesRef} w="fit-content">
           Technologies
         </Heading>
-        <List display="flex" flexWrap="wrap" columnGap={10} rowGap={4} cursor="default">
+        <List display="flex" flexWrap="wrap" columnGap={12} rowGap={8} cursor="default">
           {competences.map((competence) => (
             <ListItem key={competence} display="flex" alignItems="center" _hover={{ animation: animation }}>
               <ListIcon as={RxDotFilled} color={brandColor} />

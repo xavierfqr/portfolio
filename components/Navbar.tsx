@@ -51,10 +51,9 @@ function Navbar({ refs }: Props) {
       boxShadow="lg"
     >
       <Flex
-        fontFamily="fantasy"
         color={textColor}
         fontSize="3xl"
-        mt={[2, 2, 4]}
+        mt={[2, 2, 0]}
         mb={[2, 2, 0]}
         width="100%"
         position="relative"
@@ -77,7 +76,7 @@ function Navbar({ refs }: Props) {
           <NavButton isSelected={selectedIndex === 1} onClick={executeScroll(1, -100)}>
             About
           </NavButton>
-          <NavButton isSelected={selectedIndex === 2} onClick={executeScroll(2)}>
+          <NavButton isSelected={selectedIndex === 2} onClick={executeScroll(2, -50)}>
             Projects
           </NavButton>
           <NavButton isSelected={selectedIndex === 3} onClick={executeScroll(3)}>
