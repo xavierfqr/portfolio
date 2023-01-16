@@ -1,3 +1,4 @@
+import { useInterval } from '@chakra-ui/react';
 import { RefObject, useEffect, useState } from 'react';
 import { annotate } from 'rough-notation';
 import { useIsInViewport } from './useRefIndexInViewport';

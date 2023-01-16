@@ -74,7 +74,7 @@ export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       </Heading>
       <Formik initialValues={initalValues} onSubmit={handleSubmit}>
         {(props) => (
-          <Form className="w-3/5" ref={formMailRef}>
+          <Form className="w-full md:w-4/5 lg:w-3/5" ref={formMailRef}>
             <Field name="user_name">
               {({ field }: any) => (
                 <FormControl>
