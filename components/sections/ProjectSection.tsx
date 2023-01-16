@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, useColorModeValue } from '@chakra-ui/react';
 import React, { forwardRef, useRef, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
@@ -75,6 +75,7 @@ const projects = [
 // eslint-disable-next-line react/display-name
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const brandColor = useColorModeValue('#319795', '#50E3C2');
 
   return (
     <Flex
@@ -87,7 +88,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       direction="column"
       position="relative"
     >
-      <Heading as="h2" color="brand" mb={{ base: 2, md: 20 }} display="flex" alignItems="center">
+      <Heading as="h2" color={brandColor} mb={{ base: 2, md: 20 }} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="spade" />
         Projects
       </Heading>

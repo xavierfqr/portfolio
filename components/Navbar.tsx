@@ -13,9 +13,6 @@ function Navbar({ refs }: Props) {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [isLowerThan480] = useMediaQuery('(max-width: 480px)');
   const [isLowerThan720] = useMediaQuery('(max-width: 720px)');
-
-  console.log(isLowerThan480);
-
   const refIndexInViewport = useRefIndexInViewport(refs);
 
   useEffect(() => {
@@ -27,12 +24,15 @@ function Navbar({ refs }: Props) {
     () => {
       setSelectedIndex(index);
       const calcYOffset = isLowerThan480 ? yOffset : isLowerThan720 ? yOffset / 2 : 0;
-      const y = refs[index].current.getBoundingClientRect().top + window.pageYOffset + calcYOffset;
+      const ref = refs[index];
+      if (!ref.current) return;
+      const y = ref.current.getBoundingClientRect().top + window.pageYOffset + calcYOffset;
       window.scrollTo({ behavior: 'smooth', top: y });
     };
-  const isDark = colorMode === 'dark';
 
-  const color = useColorModeValue('black', 'white');
+  const isDark = colorMode === 'dark';
+  const navbarBg = useColorModeValue('#fff1e6', '#1a202c');
+  const textColor = useColorModeValue('black', 'white');
 
   return (
     <Flex
@@ -47,12 +47,12 @@ function Navbar({ refs }: Props) {
       left={0}
       zIndex={100}
       direction={{ base: 'column', md: 'row' }}
-      bg="gray.900"
+      bg={navbarBg}
       boxShadow="lg"
     >
       <Flex
         fontFamily="fantasy"
-        color={color}
+        color={textColor}
         fontSize="3xl"
         mt={[2, 2, 4]}
         mb={[2, 2, 0]}
@@ -69,7 +69,7 @@ function Navbar({ refs }: Props) {
           </Show>
         </Box>
       </Flex>
-      <Box>
+      <Box ml={4}>
         <Flex gap={2}>
           <NavButton isSelected={selectedIndex === 0} onClick={executeScroll(0)}>
             Home
@@ -81,7 +81,7 @@ function Navbar({ refs }: Props) {
             Projects
           </NavButton>
           <NavButton isSelected={selectedIndex === 3} onClick={executeScroll(3)}>
-            Contact Me
+            Contact&nbsp;Me
           </NavButton>
         </Flex>
       </Box>

@@ -11,13 +11,14 @@ const styles: Styles = {
   global: (props) => ({
     body: {
       color: mode('gray.800', 'whiteAlpha.900')(props),
-      bg: mode('white', 'gray.900')(props),
+      bg: mode('#f5ebe0', 'gray.900')(props),
     },
   }),
 };
 
 const colors = {
   brand: '#50E3C2',
+  brand_dark: '#319795',
   secondary: '#F56565',
 };
 

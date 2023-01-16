@@ -11,6 +11,7 @@ import {
   Image,
   useToast,
   Box,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Field, Form, Formik, FormikHelpers, type FieldAttributes } from 'formik';
 import emailjs from '@emailjs/browser';
@@ -39,6 +40,7 @@ const validateEmail = (value: string) => {
 export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const formMailRef = useRef<HTMLFormElement>(null);
   const toast = useToast();
+  const brandColor = useColorModeValue('#319795', '#50E3C2');
 
   const handleSubmit = async (values: InitialValues, actions: FormikHelpers<InitialValues>) => {
     try {
@@ -68,7 +70,7 @@ export const ContactSection = forwardRef<HTMLDivElement, any>((_, ref) => {
 
   return (
     <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" alignItems="center" justify="center" direction="column">
-      <Heading as="h2" color="brand" mb={10} display="flex" alignItems="center">
+      <Heading as="h2" color={brandColor} mb={10} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="props" />
         Contact Me
       </Heading>

@@ -1,4 +1,15 @@
-import { Box, Flex, Heading, Image, keyframes, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  keyframes,
+  List,
+  ListIcon,
+  ListItem,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { RxDotFilled } from 'react-icons/rx';
 import { useUnderlineAnnotation } from '../../hooks/useAnnotation';
@@ -35,6 +46,7 @@ const animation = `${animatedText} 0.5s forwards`;
 export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const technologiesRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLHeadingElement>(null);
+  const brandColor = useColorModeValue('#319795', '#50E3C2');
 
   useUnderlineAnnotation(technologiesRef);
   useUnderlineAnnotation(descriptionRef);
@@ -49,7 +61,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       alignItems="center"
       direction="column"
     >
-      <Heading as="h2" color="brand" pt={6} mb={10} display="flex" alignItems="center">
+      <Heading as="h2" color={brandColor} pt={6} mb={10} display="flex" alignItems="center">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="props" />
         About
       </Heading>
@@ -70,7 +82,7 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         <List display="flex" flexWrap="wrap" columnGap={10} rowGap={4} cursor="default">
           {competences.map((competence) => (
             <ListItem key={competence} display="flex" alignItems="center" _hover={{ animation: animation }}>
-              <ListIcon as={RxDotFilled} color="brand" />
+              <ListIcon as={RxDotFilled} color={brandColor} />
               <Text fontSize="lg">{competence}</Text>
             </ListItem>
           ))}
