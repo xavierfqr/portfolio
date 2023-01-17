@@ -1,14 +1,8 @@
 import { Box, Button, Flex, Heading, Image, useColorModeValue } from '@chakra-ui/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
 import { ArrowBackIcon, ArrowForwardIcon, ArrowLeftIcon, ArrowRightIcon, Icon } from '@chakra-ui/icons';
-import { motion, useScroll } from 'framer-motion';
-
-const onClickItem = (itemIndex: number) => {
-  if (!projects[itemIndex].url) return;
-  window.open(projects[itemIndex].url, '_blank');
-};
+import { motion } from 'framer-motion';
 
 type Project = {
   src: string;
@@ -57,36 +51,31 @@ const projects: Project[] = [
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [carouselWidth, setCarouselWidth] = useState(0);
-  const carouselRef = useRef(null);
-  const projectRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const projectRef = useRef<HTMLDivElement>(null);
   const brandColor = useColorModeValue('#319795', '#50E3C2');
 
   useEffect(() => {
-    if (!carouselRef.current) return;
+    if (!carouselRef.current || !carouselRef.current.scrollWidth) return;
     setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
   }, []);
 
   const onArrowLeftClick = () => {
+    if (!projectRef.current || !projectRef.current.offsetWidth) return;
     const width = projectRef.current.offsetWidth;
+    if (!carouselRef.current || !carouselRef.current.scrollWidth) return;
     carouselRef.current.scrollLeft -= width;
   };
 
   const onArrowRightClick = () => {
+    if (!projectRef.current || !projectRef.current.offsetWidth) return;
     const width = projectRef.current.offsetWidth;
+    if (!carouselRef.current || !carouselRef.current.scrollWidth) return;
     carouselRef.current.scrollLeft += width;
   };
 
   return (
-    <Flex
-      ref={ref}
-      h="100vh"
-      mx="auto"
-      maxWidth="80%"
-      // alignItems="center"
-      justify="center"
-      direction="column"
-      position="relative"
-    >
+    <Flex ref={ref} h="100vh" mx="auto" maxWidth="80%" justify="center" direction="column" position="relative">
       <Heading as="h2" color={brandColor} mb={{ base: 2, md: 20 }} display="flex" alignItems="center" margin="auto">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="spade" />
         Projects
@@ -111,9 +100,9 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
                   src={project.src}
                   alt={project.alt}
                   borderRadius="2xl"
-                  onClick={() => window.open(project.url, '_blank')}
+                  onClick={() => (project.url ? window.open(project.url, '_blank') : null)}
                   w="60%"
-                  cursor="pointer !important"
+                  cursor={`${project.url} ? 'pointer' : 'auto'`}
                 />
                 <p>{[project.desc]}</p>
               </motion.div>
