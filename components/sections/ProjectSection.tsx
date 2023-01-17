@@ -1,42 +1,23 @@
 import { Box, Button, Flex, Heading, Image, useColorModeValue } from '@chakra-ui/react';
-import React, { forwardRef, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
-import { useUnderlineAnnotation } from '../../hooks/useAnnotation';
-
-const renderArrowNext = (clickHandler: () => void, hasNext: boolean) => {
-  return (
-    <div
-      className={`${
-        hasNext ? 'absolute' : 'hidden'
-      } top-0 bottom-0 right-0 flex justify-center items-center p-3 opacity-30 hover:opacity-100 cursor-pointer z-20`}
-      onClick={clickHandler}
-    >
-      <ArrowRightIcon className="w-9 h-9 text-white" />
-    </div>
-  );
-};
-
-const renderArrowPrev = (clickHandler: () => void, hasPrev: boolean) => {
-  return (
-    <div
-      className={`${
-        hasPrev ? 'absolute' : 'hidden'
-      } top-0 bottom-0 left-0 flex justify-center items-center p-3 opacity-30 hover:opacity-100 cursor-pointer z-20`}
-      onClick={clickHandler}
-    >
-      <ArrowLeftIcon className="w-9 h-9 text-white" />
-    </div>
-  );
-};
+import { ArrowBackIcon, ArrowForwardIcon, ArrowLeftIcon, ArrowRightIcon, Icon } from '@chakra-ui/icons';
+import { motion, useScroll } from 'framer-motion';
 
 const onClickItem = (itemIndex: number) => {
   if (!projects[itemIndex].url) return;
   window.open(projects[itemIndex].url, '_blank');
 };
 
-const projects = [
+type Project = {
+  src: string;
+  alt: string;
+  url?: string;
+  desc: string;
+};
+
+const projects: Project[] = [
   {
     src: '/projects/XFQerc20-token.png',
     alt: 'Project token',
@@ -54,12 +35,12 @@ const projects = [
     url: 'https://lydia-sol-qs5.vercel.app/',
     desc: 'Lydia like application on ethereum blockchain',
   },
-  {
-    src: '/projects/blokoding.png',
-    alt: 'Project blokoding',
-    url: 'https://play.google.com/store/apps/details?id=com.blokoding',
-    desc: 'Blokoding: mobile app to teach programming to kids',
-  },
+  // {
+  //   src: '/projects/blokoding.png',
+  //   alt: 'Project blokoding',
+  //   url: 'https://play.google.com/store/apps/details?id=com.blokoding',
+  //   desc: 'Blokoding: mobile app to teach programming to kids',
+  // },
   {
     src: '/projects/GE_Healthcare.png',
     alt: 'Project GE Healthcare',
@@ -75,7 +56,25 @@ const projects = [
 // eslint-disable-next-line react/display-name
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const carouselRef = useRef(null);
+  const projectRef = useRef(null);
   const brandColor = useColorModeValue('#319795', '#50E3C2');
+
+  useEffect(() => {
+    if (!carouselRef.current) return;
+    setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+  }, []);
+
+  const onArrowLeftClick = () => {
+    const width = projectRef.current.offsetWidth;
+    carouselRef.current.scrollLeft -= width;
+  };
+
+  const onArrowRightClick = () => {
+    const width = projectRef.current.offsetWidth;
+    carouselRef.current.scrollLeft += width;
+  };
 
   return (
     <Flex
@@ -83,41 +82,47 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
       h="100vh"
       mx="auto"
       maxWidth="80%"
-      alignItems="center"
+      // alignItems="center"
       justify="center"
       direction="column"
       position="relative"
     >
-      <Heading as="h2" color={brandColor} mb={{ base: 2, md: 20 }} display="flex" alignItems="center">
+      <Heading as="h2" color={brandColor} mb={{ base: 2, md: 20 }} display="flex" alignItems="center" margin="auto">
         <Image src="/spades.png" w={7} h={7} mr={3} alt="spade" />
         Projects
       </Heading>
-      <Carousel
-        width="100%"
-        infiniteLoop
-        showStatus={false}
-        renderArrowNext={renderArrowNext}
-        renderArrowPrev={renderArrowPrev}
-        onClickItem={onClickItem}
-        showThumbs={false}
-        className="select-none relative"
-        showIndicators={false}
-        onChange={(index) => setSelectedIndex(index)}
-      >
-        {projects.map((project, index) => (
-          <Flex
-            key={index}
-            direction="column"
-            cursor={project.url ? 'pointer' : 'auto'}
-            alignItems="center"
-            justify="center"
-          >
-            <Image src={project.src} alt={project.alt} objectFit="contain" h={370} />
-          </Flex>
-        ))}
-      </Carousel>
-      <Box as="i" maxW={{ base: '95%', md: '70%' }} p={2} mt={2} rounded="md" bg="black" color="white" fontSize="xl">
-        {projects[selectedIndex].desc}
+      <Box className="flex items-center justify-center">
+        <Icon onClick={onArrowLeftClick} bg="whiteAlpha.100" cursor="pointer" rounded="md" boxSize="10">
+          <ArrowBackIcon></ArrowBackIcon>
+        </Icon>
+        <motion.div
+          ref={carouselRef}
+          className="cursor-grab  overflow-hidden rounded-xl bg-gray-800 scroll-smooth"
+          whileTap={{ cursor: 'grabbing' }}
+        >
+          <motion.div drag="x" dragConstraints={{ right: 0, left: -carouselWidth }} className="flex rounded-xl w-full">
+            {projects.map((project, index) => (
+              <motion.div
+                ref={projectRef}
+                key={index}
+                className={`min-w-[100%] max-w-[100%] p-10 flex flex-col items-center justify-center rounded-l`}
+              >
+                <Image
+                  src={project.src}
+                  alt={project.alt}
+                  borderRadius="2xl"
+                  onClick={() => window.open(project.url, '_blank')}
+                  w="60%"
+                  cursor="pointer !important"
+                />
+                <p>{[project.desc]}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+        <Icon onClick={onArrowRightClick} bg="whiteAlpha.100" cursor="pointer" rounded="md" boxSize="10">
+          <ArrowForwardIcon></ArrowForwardIcon>
+        </Icon>
       </Box>
     </Flex>
   );
