@@ -51,6 +51,7 @@ const projects: Project[] = [
 export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [carouselWidth, setCarouselWidth] = useState(0);
+  const [isArrowDisabled, setIsArrowDisabled] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const projectRef = useRef<HTMLDivElement>(null);
   const brandColor = useColorModeValue('#319795', '#50E3C2');
@@ -60,18 +61,20 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
     setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
   }, []);
 
-  const onArrowLeftClick = () => {
+  const onArrowClick = (direction: 'left' | 'right') => {
+    if (isArrowDisabled) return;
     if (!projectRef.current || !projectRef.current.offsetWidth) return;
     const width = projectRef.current.offsetWidth;
     if (!carouselRef.current || !carouselRef.current.scrollWidth) return;
-    carouselRef.current.scrollLeft -= width;
-  };
-
-  const onArrowRightClick = () => {
-    if (!projectRef.current || !projectRef.current.offsetWidth) return;
-    const width = projectRef.current.offsetWidth;
-    if (!carouselRef.current || !carouselRef.current.scrollWidth) return;
-    carouselRef.current.scrollLeft += width;
+    if (direction === 'left') {
+      carouselRef.current.scrollLeft -= width;
+    } else {
+      carouselRef.current.scrollLeft += width;
+    }
+    setIsArrowDisabled(true);
+    setTimeout(() => {
+      setIsArrowDisabled(false);
+    }, 800);
   };
 
   return (
@@ -81,7 +84,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         Projects
       </Heading>
       <Box className="flex items-center justify-center">
-        <Icon onClick={onArrowLeftClick} bg="whiteAlpha.100" cursor="pointer" rounded="md" boxSize="10">
+        <Icon onClick={() => onArrowClick('left')} bg="whiteAlpha.100" cursor="pointer" rounded="md" boxSize="10">
           <ArrowBackIcon></ArrowBackIcon>
         </Icon>
         <motion.div
@@ -109,7 +112,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
             ))}
           </motion.div>
         </motion.div>
-        <Icon onClick={onArrowRightClick} bg="whiteAlpha.100" cursor="pointer" rounded="md" boxSize="10">
+        <Icon onClick={() => onArrowClick('right')} bg="whiteAlpha.100" cursor="pointer" rounded="md" boxSize="10">
           <ArrowForwardIcon></ArrowForwardIcon>
         </Icon>
       </Box>
