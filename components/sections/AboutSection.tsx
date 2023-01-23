@@ -69,11 +69,12 @@ export const AboutSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         <Heading as="h3" fontSize="3xl" mb={8} ref={descriptionRef} w="fit-content">
           Description
         </Heading>
-        <Text fontSize="lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam praesentium fugit ratione aliquid delectus
-          hic, dolorum ullam commodi necessitatibus, recusandae perferendis nulla reprehenderit assumenda eos possimus
-          quod magnam velit eaque officiis perspiciatis
-        </Text>
+
+        <Box fontSize="lg">
+          I am a full stack developer with a passion for React - Typescript and blockchain technologies. I recently
+          graduated from Epita, a French computer engineering school. I am currently looking for a full time position as
+          a full-stack developer. I am also open to freelance projects.
+        </Box>
       </Box>
       <Box w="100%">
         <Heading as="h3" fontSize="3xl" mb={8} ref={technologiesRef} w="fit-content">
