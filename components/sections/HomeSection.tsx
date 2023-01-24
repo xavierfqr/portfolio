@@ -1,4 +1,5 @@
-import { Box, Button, Flex, Image, keyframes, Show, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, keyframes, Show, Text, useColorModeValue } from '@chakra-ui/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { forwardRef } from 'react';
 import { downloadPDF } from '../../utils/downloadPDF';
@@ -44,10 +45,10 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         </Text>
         <Flex gap={3} mt={10}>
           <Link target="_blank" href="https://github.com/xavierfqr">
-            <Image src="/github.png" alt="programmer illustration" h={35} />
+            <Image src="/github.png" alt="programmer illustration" height={35} width={35} />
           </Link>
           <Link target="_blank" href="https://www.linkedin.com/in/xavier-facqueur-06413a195/?locale=en_US">
-            <Image src="/linkedin.png" alt="programmer illustration" h={35} />
+            <Image src="/linkedin.png" alt="programmer illustration" height={35} width={35} />
           </Link>
         </Flex>
         <Button colorScheme="teal" mt={5} onClick={() => downloadPDF('/resume.pdf', 'resume_xavierfacqueur.pdf')}>
@@ -55,7 +56,7 @@ export const HomeSection = forwardRef<HTMLDivElement, any>((_, ref) => {
         </Button>
       </Box>
       <Show above="lg">
-        <Image src="/programmer_working.png" alt="programmer illustration" h={360} mb={20} />
+        <Image src="/programmer_working.png" alt="programmer illustration" height={1} width={460} className="mb-20" />
       </Show>
       <Box position="absolute" bottom={[100, 20, 0]} w="100%">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="none">
