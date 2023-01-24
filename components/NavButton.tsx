@@ -1,5 +1,5 @@
-import { Box, Button, useColorModeValue } from '@chakra-ui/react';
 import React, { PropsWithChildren } from 'react';
+import { Button, useColorModeValue } from '@chakra-ui/react';
 
 type Props = {
   isSelected: boolean;

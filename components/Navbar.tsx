@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, flexbox, Show, useColorMode, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
+import { Box, Button, Flex, Show, useColorMode, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useRefIndexInViewport } from '../hooks/useRefIndexInViewport';
 import NavButton from './NavButton';

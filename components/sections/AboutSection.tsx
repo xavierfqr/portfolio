@@ -10,7 +10,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import { RxDotFilled } from 'react-icons/rx';
 import { useUnderlineAnnotation } from '../../hooks/useAnnotation';
 

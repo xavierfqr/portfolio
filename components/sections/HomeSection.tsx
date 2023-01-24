@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Image, keyframes, Show, Text, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
-import React, { forwardRef, RefObject } from 'react';
+import React, { forwardRef } from 'react';
 import { downloadPDF } from '../../utils/downloadPDF';
 
 // eslint-disable-next-line react/display-name

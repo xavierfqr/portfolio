@@ -1,7 +1,7 @@
-import { Box, Button, Flex, Heading, Image, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { ArrowBackIcon, ArrowForwardIcon, ArrowLeftIcon, ArrowRightIcon, Icon } from '@chakra-ui/icons';
+import { ArrowBackIcon, ArrowForwardIcon, Icon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 
 type Project = {
@@ -54,7 +54,6 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const projectRef = useRef<HTMLDivElement>(null);
   const brandColor = useColorModeValue('#319795', '#50E3C2');
-  const descColor = useColorModeValue('white', 'white');
   const [isLowerThan720] = useMediaQuery('(max-width: 720px)');
 
   useEffect(() => {
@@ -135,7 +134,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
                   onClick={() => (project.url ? window.open(project.url, '_blank') : null)}
                   w="60%"
                 />
-                <Box as="i" fontSize={{ base: 'sm', md: 'lg' }} color={descColor} mt={{ base: 2, md: 10 }}>
+                <Box as="i" fontSize={{ base: 'sm', md: 'lg' }} color="white" mt={{ base: 2, md: 10 }}>
                   {project.desc}
                 </Box>
               </motion.div>
