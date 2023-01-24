@@ -29,17 +29,16 @@ const projects: Project[] = [
     url: 'https://lydia-sol-qs5.vercel.app/',
     desc: 'Lydia like application on ethereum blockchain',
   },
-  // {
-  //   src: '/projects/blokoding.png',
-  //   alt: 'Project blokoding',
-  //   url: 'https://play.google.com/store/apps/details?id=com.blokoding',
-  //   desc: 'Blokoding: mobile app to teach programming to kids',
-  // },
+  {
+    src: '/projects/blokoding_playstore.png',
+    alt: 'Project blokoding',
+    url: 'https://play.google.com/store/apps/details?id=com.blokoding',
+    desc: 'Blokoding: mobile app to teach programming to kids',
+  },
   {
     src: '/projects/GE_Healthcare.png',
     alt: 'Project GE Healthcare',
-    desc: 'a bit too long',
-    // desc: 'Web application built for General Electric Healthcare to help doctors interpreting medical images on their patients',
+    desc: 'Web application built for General Electric Healthcare ',
   },
   {
     src: '/projects/documents.png',
@@ -125,7 +124,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
               <motion.div
                 ref={projectRef}
                 key={index}
-                className={`min-w-[100%] max-w-[100%] flex flex-col items-center justify-center rounded-l ${
+                className={`min-w-[100%] max-w-[100%] p-2 flex flex-col items-center justify-center rounded-l ${
                   project.url ? 'cursor-pointer' : 'cursor-auto'
                 }`}
               >
@@ -136,7 +135,7 @@ export const ProjectSection = forwardRef<HTMLDivElement, any>((_, ref) => {
                   onClick={() => (project.url ? window.open(project.url, '_blank') : null)}
                   w="60%"
                 />
-                <Box as="i" fontSize="sm" color={descColor} mt={{ base: 2, md: 10 }}>
+                <Box as="i" fontSize={{ base: 'sm', md: 'lg' }} color={descColor} mt={{ base: 2, md: 10 }}>
                   {project.desc}
                 </Box>
               </motion.div>
