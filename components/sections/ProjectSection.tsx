@@ -45,6 +45,11 @@ const projects: Project[] = [
     alt: 'Beeldi Socuments section',
     desc: 'Tool to manage documents for Beeldi',
   },
+  {
+    src: '/projects/oizo.png',
+    alt: 'Oizo',
+    desc: 'Twitter like application',
+  },
 ];
 
 // eslint-disable-next-line react/display-name
